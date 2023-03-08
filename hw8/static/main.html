@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<head>
+    <script src="js/jquery-3.6.3.js"></script>
+    
+    
+    <style>
+        body {
+                 background-image: url('https://hxiao603.github.io/pic2/background.jpg');
+                 background-size:100% auto;
+            }
+
+            .border{
+                width: 700px;
+                height: 300px;
+                border-radius: 25px;
+                margin: auto;
+                padding: 30px;
+                background: rgba(255, 255, 255, 0.393);
+                margin-top: 50px;
+                position: absolute;
+                top:15%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                flex-direction: column; 
+                margin-bottom: 40px;
+
+            }
+
+            .topText{
+                font-size: 35px;
+                font-family:"Times New Roman",Times,serif;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color:rgba(255, 255, 255, 0.333);
+            }
+
+            .line{
+                width: 650px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.333);
+                position: absolute;
+                left: 50%;
+                top: 16%;
+                transform: translate(-50%, -50%);
+                
+            }
+
+            .keyword_title{
+                font-size: 20px;
+                font-family:"Times New Roman",Times,serif;
+                position: absolute;
+                left: 13%;
+                top: 24%;
+                transform: translate(-50%, -50%);
+                color:  rgba(0, 255, 255, 0.573);
+            }
+
+            .required {
+                color: red;
+            }
+
+            .long_input {
+                width: 650px;
+                height: 25px;
+                background-color: rgba(19, 19, 232, 0);
+                border: 1px solid rgba(255, 255, 255);
+                border-radius: 8px;
+                position: absolute;
+                left: 7%;
+                top: 28%;
+                color: white;
+                
+            }
+
+            .short_input {
+                width: 270px;
+                height: 25px;
+                background-color: rgba(19, 19, 232, 0);
+                border: 1px solid rgba(255, 255, 255);
+                border-radius: 8px;
+                position: absolute;
+                left: 7%;
+                top: 49%;
+                color: white;
+            }
+
+            .distance_title{
+                font-size: 20px;
+                font-family:"Times New Roman",Times,serif;
+                position: absolute;
+                left: 15.5%;
+                top: 43%;
+                transform: translate(-50%, -50%);
+                color:  rgba(0, 255, 255, 0.573);
+            }
+
+
+            .category_title{
+                font-size: 20px;
+                font-family:"Times New Roman",Times,serif;
+                position: absolute;
+                left: 60%;
+                top: 43%;
+                transform: translate(-50%, -50%);
+                color:  rgba(0, 255, 255, 0.573);
+            }
+
+            .location_title{
+                font-size: 20px;
+                font-family:"Times New Roman",Times,serif;
+                position: absolute;
+                left: 12.5%;
+                top: 65%;
+                transform: translate(-50%, -50%);
+                color:  rgba(0, 255, 255, 0.573);
+            }
+            
+            .category_select{
+                width: 300px;
+                height: 25px;
+                background-color: rgba(19, 19, 232, 0);
+                border: 1px solid rgba(255, 255, 255);
+                border-radius: 8px;
+                position: absolute;
+                left: 54%;
+                top: 49%;
+                color: white;
+            }
+
+            .auto_detect{
+                position: absolute;
+                left: 19%;
+                top: 65%;
+                transform: translate(-50%, -50%);
+            }
+
+            .auto_detect_title{
+                font-size: 15px;
+                font-family:"Times New Roman",Times,serif;
+                position: absolute;
+                left: 29%;
+                top: 66%;
+                transform: translate(-50%, -50%);
+                color:  rgba(255, 255, 255, 0.573);
+            }
+
+            .location_input{
+                border: 1px solid rgba(255, 255, 255);
+                border-radius: 8px;
+                width: 650px;
+                height: 25px;
+                background-color: rgba(19, 19, 232, 0);
+                position: absolute;
+                left: 7%;
+                top: 70%;
+                color: white;
+            }
+
+            .submit_button{
+                font-size: 17px;
+                font-family:"Times New Roman",Times,serif;
+                width: 120px;
+                height: 50px;
+                border-radius: 10px;
+                background-color: rgb(250, 138, 53);
+                border: 1px solid rgb(250, 138, 53);
+                color:  rgba(255, 255, 255);
+                position: absolute;
+                left: 7%;
+                top: 83%;
+            }
+           
+            .submit_button:hover{
+                background-color: rgba(250, 138, 53,0.9);
+            }
+
+            .clean_button{
+                font-size: 17px;
+                font-family:"Times New Roman",Times,serif;
+                width: 120px;
+                height: 50px;
+                border-radius: 10px;
+                background-color: rgba(25, 104, 230);
+                border: 1px solid rgba(25, 104, 230);
+                color:  rgba(255, 255, 255);
+                position: absolute;
+                left: 25%;
+                top: 83%;
+            }
+           
+            .clean_button:hover{
+                background-color: rgba(25, 104, 230,0.9);
+            }
+
+            .sorted_th{
+                cursor: pointer;
+            }
+            
+            .table_container{
+                margin-bottom: 100px;
+            }
+            table{
+                
+                margin: auto;
+                margin-top: 450px;
+            }
+
+            th{
+                background-color: white; 
+                color: black;
+            }
+
+            td{
+                background-color: white; 
+                color: black;
+            }
+
+            .title_sort{
+
+            }
+
+            .details_border{
+                width: 1000px;
+                height: 600px;
+                border-radius: 25px;
+                display: flex;
+                background: rgba(255, 255, 255, 0.393);
+                transform: translate(-50%, -50%);
+                flex-direction: column;
+                margin-top: 520px;
+                padding-top: 30px;
+                margin-left: 50%;
+            }
+
+            .details_title{
+                
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 25px;
+                
+            }
+
+            .details_info{
+                color: #26dcdc;
+                font-size: 25px;
+                display: flex;
+                margin-left: 20px;
+                margin-bottom: 7px;
+            }
+
+            .the_info{
+                color: white;
+                font-size: 20px;
+                display: flex;
+                margin-left: 20px;
+                margin-bottom: 7px;
+            }
+
+            .horizontal_info{
+                display: flex;
+                flex-direction: row;
+                margin-left: 20px;
+                margin-bottom: 7px;
+            }
+
+            .split{
+                display: flex;
+                margin-left: 3px;
+                margin-right: 3px;
+                
+            }
+
+            .text_align{
+                display: flex;
+            }
+
+            .status_symbol{
+    	        width: 100px;
+                height: 40px;
+                border-radius: 15px;
+                display:flex;
+                margin-left: 20px;
+            }
+    
+            .status_info{
+    	        display:flex;
+                margin: auto;
+    	        font-size: 17px;
+                color: white;
+            }
+           
+            .map_pic{
+                display:flex;
+                margin-top: 10px;
+                
+            }
+
+            .vertical{
+                display:flex;
+                flex-direction: column;
+            }
+
+            .event_color:hover{
+                color: blue;
+            }
+
+            .expand_button{
+                display: flex;
+                flex-direction: column;
+                transform: translate(-50%, -50%);
+                margin-left: 50%;
+            }
+            /*Reference: https://stackoverflow.com/questions/27492191/how-to-make-a-chevron-arrow-using-css */
+            .down{
+                width: 50px;
+                height: 50px;
+                transform: rotate(135deg);
+                display: inline-block;
+                border-right: 0.2px solid rgba( 255, 255, 255, .5);
+                border-top: 0.2px solid rgba( 255, 255, 255, .5);
+                
+            }
+
+            .loc_border{
+                width: 1000px;
+                height: 300px;
+                border-radius: 25px;
+                display: flex;
+                background: rgba(255, 255, 255, 0.82);
+                border: 1px solid black;
+                transform: translate(-50%, -50%);
+                flex-direction: column;
+                outline: 8px solid rgba(255, 255, 255, 0.82);
+                padding-top: 30px;
+                margin-left: 50%;
+            }
+
+            .big_sep{
+                border-right: 2px solid black;
+                display: inline-block;
+                width: 200px;
+                height: 120px;
+            }
+    </style>
+</head>
+<html>
+<body>
+    <div class="border" id="search_bar">
+        <form onsubmit="return false" id="the_form" >
+            <div class="topText">Event Search</div>
+            <div class="line"></div>
+            <div class="keyword_title">Keyword<span class="required">*</span></div>
+            <input type="text" name="keyword" id="keyword" class="long_input" required>
+            <div class="distance_title">Distance(miles)</div>
+            <input type="number" name="distance" id="distance" value="10" class="short_input">
+            <div class="category_title">Category<span class="required">*</span></div>
+            <div class="location_title">Location<span class="required">*</span></div>
+            
+            <div class="auto_detect_title">Auto-Detect Location</div>
+            <input type="text" name="location" id="location" class="location_input" required>
+            <select name="category" id="category" class="category_select">  
+                <option value="Default" style="background-color: rgba(98,91,87)" selected>Default</option>
+                <option value="Music" style="background-color: rgba(98,91,87)">Music</option>
+                <option value="Sports" style="background-color: rgba(98,91,87)">Sport</option>
+                <option value="Arts" style="background-color: rgba(98,91,87)">Arts</option>
+                <option value="Film" style="background-color: rgba(98,91,87)">Film</option>
+                <option value="Theatre" style="background-color: rgba(98,91,87)">Theatre</option>
+                <option value="Miscellaneous" style="background-color: rgba(98,91,87)">Miscellaneous</option>
+            </select>
+            <input type="checkbox" id="auto_detect_location" class="auto_detect" unchecked onclick="myFunction()">
+            <button onclick="getValue()" class="submit_button"> Search</button>
+            <button onclick="clean_data()"class="clean_button"> CLEAR </button>
+        </form>
+    
+    </div>
+    <div class="table_container" id="mytable">
+        
+    </div>
+    
+    
+    
+</body>
+
+<script src="js/mainPage.js"></script>
+<script>
+    function myFunction(){
+        var check = document.getElementById("auto_detect_location");
+        var content = document.getElementById("location");
+        if(check.checked == true){
+            content.style.display = "none"
+        }else{
+            content.style.display = "block"
+        }
+        
+    }
+</script>
+
+
+
+
+
+</html>
