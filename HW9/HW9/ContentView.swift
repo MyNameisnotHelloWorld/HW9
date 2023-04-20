@@ -148,9 +148,6 @@ struct formView : View{
                                             UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
                     
                                         }else{
-                                            totalResult = process_table(kw:kw,position:position,distance:distance,category:chooseOption,autoValue:autoValue)
-                    
-                    
                                             isSubmit = true
                                             isClean = false
                     
@@ -207,7 +204,7 @@ struct formView : View{
                     
                 }
                 if(isSubmit && isClean == false){
-                    
+                    let totalResult = process_table(kw:kw,position:position,distance:distance,category:chooseOption,autoValue:autoValue)
                     Section{
                         Text("Result").font(.system(size: 30, weight: .bold))
                             .foregroundColor(.black)
@@ -215,8 +212,9 @@ struct formView : View{
                         if showTableView {
                                 TableView(details: totalResult)
                         } else {
+                            
                             VStack (alignment: .center){
-                                
+                                HStack(alignment:.center){
                                     Spacer()
                                     ProgressView()
                                     
@@ -227,9 +225,11 @@ struct formView : View{
                                         }
                                     
                                     Spacer()
+                                    
+                                }
+                                HStack(alignment:.center){
                                     Text("Please wait").foregroundColor(Color.gray)
-                                
-                                
+                                }
                             }
                         }
                             
@@ -251,39 +251,126 @@ struct formView : View{
 
 struct detailView: View{
     var event_details:[String:Any]
-    
+    @State var loading:Bool
     var body: some View{
-        
-        VStack{
-            Section{
-                if let event = event_details["event"]! as? String {
-                    Text(event).font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.black)
-                        .textCase(.none)
+        if(loading){
+            VStack (alignment: .center){
+                HStack(alignment:.center){
+                    Spacer()
+                    ProgressView()
+                    
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                loading = false
+                            }
+                        }
+                    
+                    Spacer()
+                    
+                }
+                HStack(alignment:.center){
+                    Text("Please wait").foregroundColor(Color.gray)
                 }
             }
-        }
-        TabView {
-            
-                Text("Events")
+        }else{
+            TabView {
+                eventsView(event_details: event_details)
                     .tabItem {
                         Image(systemName: "text.bubble.fill")
                         Text("Events")
-                }
+                    }
                 Text("Artist/Team")
                     .tabItem {
                         Image(systemName: "guitars.fill")
                         Text("Artist/Team")
-                }
+                    }
                 Text("Nearby Screen")
                     .tabItem {
                         Image(systemName: "location.fill")
                         Text("Venue")
-                }
+                    }
+            }
         }
     }
 }
 
+
+struct eventsView: View{
+    var event_details:[String:Any]
+    
+    var body: some View{
+        
+        VStack{
+            VStack(alignment: .leading){
+                
+                if let event = event_details["event"]! as? String {
+                    Text(event).font(.system(size: 25, weight: .bold))
+                        .foregroundColor(.black)
+                        .padding(.bottom)
+                        .textCase(.none)
+                        .multilineTextAlignment(.center)
+                }
+                
+                HStack{
+                    VStack(alignment: .leading){
+                        Text("Date").font(.system(size: 20, weight: .bold))
+                        if let date = event_details["localDate"]! as? String {
+                            Text(date).font(.system(size: 15, weight: .bold))
+                                .foregroundColor(.gray)
+                                .textCase(.none)
+                                
+                        }
+                    }
+                    Spacer()
+                    
+                    VStack(alignment: .trailing){
+                        Text("Artist/Team").font(.system(size: 20, weight: .bold))
+                        if let content = event_details["content"]! as? String {
+                            Text(content).font(.system(size: 15, weight: .bold))
+                                .foregroundColor(.gray)
+                                .textCase(.none)
+                                .multilineTextAlignment(.trailing)
+                                
+                        }
+                    }
+                    
+                    
+                }
+                
+                HStack{
+                    VStack(alignment: .leading){
+                        Text("Venue").font(.system(size: 20, weight: .bold))
+                        if let v_name = event_details["venue_name"]! as? String {
+                            Text(v_name).font(.system(size: 15, weight: .bold))
+                                .foregroundColor(.gray)
+                                .textCase(.none)
+                            
+                        }
+                    }
+                    Spacer()
+                    
+                    VStack(alignment: .trailing){
+                        Text("Genre").font(.system(size: 20, weight: .bold))
+                        if let genre = event_details["genre"]! as? String {
+                            Text(genre).font(.system(size: 15, weight: .bold))
+                                .foregroundColor(.gray)
+                                .textCase(.none)
+                                .multilineTextAlignment(.trailing)
+                            
+                        }
+                    }
+                    
+                }
+                Spacer()
+                
+                
+                
+                
+            }
+            
+        }
+    }
+}
 struct TableView : View{
     var details:[[String:Any]]
     
@@ -291,7 +378,7 @@ struct TableView : View{
         if(details.count>0){
             List(details.indices, id:\.self){
                 index in
-                NavigationLink(destination: detailView(event_details: details[index])){
+                NavigationLink(destination: detailView(event_details: details[index],loading: true)){
                     HStack{
                         if let date = details[index]["localDate"]! as? String {
                             if let time = details[index]["localTime"]! as? String {
@@ -421,9 +508,11 @@ func process_table(kw:String,position:String,distance:Int,category:String,autoVa
     do{
         let data = try Data(contentsOf: url)
         let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] ?? []
-        
+        print(jsonArray)
+        print(urlString)
         return jsonArray
     }catch{
+        print(urlString)
         print("Error: \(error.localizedDescription)")
         return []
     }
