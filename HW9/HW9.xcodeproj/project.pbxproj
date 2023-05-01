@@ -22,6 +22,8 @@
 		6DDBCAAC29DBBA2900E03A27 /* infoEnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCAAB29DBBA2900E03A27 /* infoEnter.swift */; };
 		6DF942AA29FE0E5100DC0816 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCA8229DBB5C900E03A27 /* ContentView.swift */; };
 		6DF942AB29FE0E5100DC0816 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCA8229DBB5C900E03A27 /* ContentView.swift */; };
+		6DF942AF29FF73E200DC0816 /* ViewSmallPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF942AE29FF73E200DC0816 /* ViewSmallPart.swift */; };
+		6DF942B129FF748900DC0816 /* BigWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF942B029FF748900DC0816 /* BigWindowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		6DDBCA9C29DBB5CA00E03A27 /* HW9UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW9UITests.swift; sourceTree = "<group>"; };
 		6DDBCA9E29DBB5CA00E03A27 /* HW9UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW9UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6DDBCAAB29DBBA2900E03A27 /* infoEnter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoEnter.swift; sourceTree = "<group>"; };
+		6DF942AE29FF73E200DC0816 /* ViewSmallPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSmallPart.swift; sourceTree = "<group>"; };
+		6DF942B029FF748900DC0816 /* BigWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigWindowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 				6DDBCA8729DBB5CA00E03A27 /* Preview Content */,
 				6D3CDFDA29EC04F4003AAA2B /* Controller.swift */,
 				6D40D19029FDF7A600FC5CCA /* model.swift */,
+				6DF942AE29FF73E200DC0816 /* ViewSmallPart.swift */,
+				6DF942B029FF748900DC0816 /* BigWindowView.swift */,
 			);
 			path = HW9;
 			sourceTree = "<group>";
@@ -278,9 +284,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DF942B129FF748900DC0816 /* BigWindowView.swift in Sources */,
 				6D40D19129FDF7A600FC5CCA /* model.swift in Sources */,
 				6DDBCA8329DBB5C900E03A27 /* ContentView.swift in Sources */,
 				6DDBCAAC29DBBA2900E03A27 /* infoEnter.swift in Sources */,
+				6DF942AF29FF73E200DC0816 /* ViewSmallPart.swift in Sources */,
 				6DDBCA8129DBB5C900E03A27 /* HW9App.swift in Sources */,
 				6D3CDFDB29EC04F4003AAA2B /* Controller.swift in Sources */,
 			);
