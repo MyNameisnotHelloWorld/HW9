@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
-
 @main
 struct HW9App: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
+
+

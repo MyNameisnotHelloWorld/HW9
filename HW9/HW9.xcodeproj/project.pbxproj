@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D37160F29FCC7B40038D648 /* images_Android in Resources */ = {isa = PBXBuildFile; fileRef = 6D37160E29FCC7B40038D648 /* images_Android */; };
 		6D3CDFDB29EC04F4003AAA2B /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3CDFDA29EC04F4003AAA2B /* Controller.swift */; };
+		6D40D19129FDF7A600FC5CCA /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40D19029FDF7A600FC5CCA /* model.swift */; };
+		6D40D19229FDF7A600FC5CCA /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40D19029FDF7A600FC5CCA /* model.swift */; };
+		6D40D19329FDF7A600FC5CCA /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40D19029FDF7A600FC5CCA /* model.swift */; };
 		6DDBCA8129DBB5C900E03A27 /* HW9App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCA8029DBB5C900E03A27 /* HW9App.swift */; };
 		6DDBCA8329DBB5C900E03A27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCA8229DBB5C900E03A27 /* ContentView.swift */; };
 		6DDBCA8529DBB5CA00E03A27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DDBCA8429DBB5CA00E03A27 /* Assets.xcassets */; };
@@ -16,6 +20,8 @@
 		6DDBCA9D29DBB5CA00E03A27 /* HW9UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCA9C29DBB5CA00E03A27 /* HW9UITests.swift */; };
 		6DDBCA9F29DBB5CA00E03A27 /* HW9UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCA9E29DBB5CA00E03A27 /* HW9UITestsLaunchTests.swift */; };
 		6DDBCAAC29DBBA2900E03A27 /* infoEnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCAAB29DBBA2900E03A27 /* infoEnter.swift */; };
+		6DF942AA29FE0E5100DC0816 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCA8229DBB5C900E03A27 /* ContentView.swift */; };
+		6DF942AB29FE0E5100DC0816 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDBCA8229DBB5C900E03A27 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D37160E29FCC7B40038D648 /* images_Android */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images_Android; path = ../../../../Downloads/images_Android; sourceTree = "<group>"; };
 		6D3CDFD929EB6C4E003AAA2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6D3CDFDA29EC04F4003AAA2B /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		6D40D19029FDF7A600FC5CCA /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		6DDBCA7D29DBB5C900E03A27 /* HW9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DDBCA8029DBB5C900E03A27 /* HW9App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW9App.swift; sourceTree = "<group>"; };
 		6DDBCA8229DBB5C900E03A27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,10 +112,12 @@
 				6DDBCA8029DBB5C900E03A27 /* HW9App.swift */,
 				6DDBCA8229DBB5C900E03A27 /* ContentView.swift */,
 				6DDBCA8429DBB5CA00E03A27 /* Assets.xcassets */,
+				6D37160E29FCC7B40038D648 /* images_Android */,
 				6DDBCA8629DBB5CA00E03A27 /* HW9.entitlements */,
 				6DDBCAAB29DBBA2900E03A27 /* infoEnter.swift */,
 				6DDBCA8729DBB5CA00E03A27 /* Preview Content */,
 				6D3CDFDA29EC04F4003AAA2B /* Controller.swift */,
+				6D40D19029FDF7A600FC5CCA /* model.swift */,
 			);
 			path = HW9;
 			sourceTree = "<group>";
@@ -243,6 +253,7 @@
 			files = (
 				6DDBCA8929DBB5CA00E03A27 /* Preview Assets.xcassets in Resources */,
 				6DDBCA8529DBB5CA00E03A27 /* Assets.xcassets in Resources */,
+				6D37160F29FCC7B40038D648 /* images_Android in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D40D19129FDF7A600FC5CCA /* model.swift in Sources */,
 				6DDBCA8329DBB5C900E03A27 /* ContentView.swift in Sources */,
 				6DDBCAAC29DBBA2900E03A27 /* infoEnter.swift in Sources */,
 				6DDBCA8129DBB5C900E03A27 /* HW9App.swift in Sources */,
@@ -279,6 +291,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DDBCA9329DBB5CA00E03A27 /* HW9Tests.swift in Sources */,
+				6D40D19229FDF7A600FC5CCA /* model.swift in Sources */,
+				6DF942AA29FE0E5100DC0816 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +301,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DDBCA9D29DBB5CA00E03A27 /* HW9UITests.swift in Sources */,
+				6D40D19329FDF7A600FC5CCA /* model.swift in Sources */,
+				6DF942AB29FE0E5100DC0816 /* ContentView.swift in Sources */,
 				6DDBCA9F29DBB5CA00E03A27 /* HW9UITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
