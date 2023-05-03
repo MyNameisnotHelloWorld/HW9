@@ -7,16 +7,20 @@
 
 import Foundation
 import SwiftUI
+import CoreLocation
+import MapKit
+
 
 struct VenueMap : View{
-    var map:[String]
+    var themap:[String]
+    @State private var isMap = false
     var body: some View{
         VStack {
             HStack {
                 Spacer()
+                let _ = print(themap)
                 Button(action: {
-                            print("click")
-                            // Perform action
+                    isMap.toggle()
                         }, label: {
                             Rectangle()
                                 .foregroundColor(.red)
@@ -28,9 +32,36 @@ struct VenueMap : View{
                         .padding(.vertical, 8)
                         .padding(.horizontal, 20)
                 Spacer()
+            }.popover(isPresented: $isMap, arrowEdge: .top) {
+                SheetView(lat: Double(themap[1])!, long: Double(themap[0])!)
             }
             // Rest of the code...
         }
+    }
+}
+
+struct SheetView: View {
+    var lat:Double
+    var long:Double
+    var body: some View {
+        MapView(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
+            .frame(maxWidth:900, maxHeight: 700)
+            .ignoresSafeArea()
+    }
+}
+
+struct MapView: UIViewRepresentable {
+    var coordinate: CLLocationCoordinate2D
+
+    func makeUIView(context: Context) -> MKMapView {
+        MKMapView()
+    }
+
+    func updateUIView(_ view: MKMapView, context: Context) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        view.addAnnotation(annotation)
+        view.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)), animated: true)
     }
 }
 
@@ -45,7 +76,16 @@ struct VenueChildRule : View{
                     .font(.system(size: 25, weight: .bold))
                 Spacer()
             }
-            // Rest of the code...
+            ScrollView {
+                
+                Text(childRule)
+                .foregroundColor(.gray)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+                .lineLimit(nil)
+                
+            }.frame(height: 50)
         }
     }
 }
@@ -61,7 +101,16 @@ struct VenueGeneralRule : View{
                     .font(.system(size: 25, weight: .bold))
                 Spacer()
             }
-            // Rest of the code...
+            ScrollView {
+                
+                Text(generalRule)
+                .foregroundColor(.gray)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+                .lineLimit(nil)
+                
+            }.frame(height: 50)
         }
     }
 }
@@ -77,7 +126,16 @@ struct VenueOpenHour : View{
                     .font(.system(size: 25, weight: .bold))
                 Spacer()
             }
-            // Rest of the code...
+            ScrollView {
+                
+                Text(openhour)
+                .foregroundColor(.gray)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+                .lineLimit(nil)
+                
+            }.frame(height: 50)
         }
     }
 }
@@ -93,16 +151,14 @@ struct VenuePhone : View{
                     .font(.system(size: 25, weight: .bold))
                 Spacer()
             }
-            VStack {
-                Spacer()
+            ScrollView {
                 Text(phone)
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: .infinity)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
-                Spacer()
-            }
+            }.frame(height: 30)
         }
     }
 }
@@ -217,6 +273,131 @@ struct Popularity: View{
         }.padding()
     }
 }
+
+struct AutoComplete: View {
+    @State private var selectedOption = 0
+    var theW : String
+    let options : [String]
+    func findAuto(){
+        if(!theW.isEmpty){
+            
+        }
+    }
+
+    var body: some View {
+        VStack {
+            HStack(spacing: 10) {
+                ForEach(0..<options.count) { index in
+                    Button(action: {
+                        self.selectedOption = index
+                    }) {
+                        Text(options[index])
+                            .font(.headline)
+                            .padding(10)
+                            .background(selectedOption == index ? Color.blue : Color.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                }
+            }
+            .padding()
+            
+            Text("Selected Option: \(options[selectedOption])")
+                .font(.headline)
+                .padding()
+        }
+    }
+}
+
+struct SuggestionsView: View{
+    var kw:String
+    @State private var loading = true
+    @State private var theS:[String] = []
+    @State public var choose = ""
+    var body: some View{
+        VStack{
+            if(loading){
+                
+                VStack{
+                    
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        ProgressView().onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    theS = autoGet(kw: kw)
+                                    loading = false
+                                }
+                            }
+                        Spacer()
+                    }
+                    Spacer()
+                }
+            }else{
+                Section{
+                    VStack{
+                        Spacer()
+                        Form{
+                            Picker("",selection: $choose){
+                            ForEach(0..<theS.count, id: \.self) { index in
+                            Text(theS[index]).tag(theS[index])}
+                            }.pickerStyle(.inline).background(Color.clear).accentColor(Color.white)
+                        }
+                        Spacer()
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+//struct AddFav: View{
+//    var item:[String:Any]
+//    @State public var isFav = false
+//    var body: some View{
+//        Section{
+//            Button(action: {
+//                storeFav(data: item)
+//                isFav = true
+//            }, label: {
+//                Rectangle()
+//                    .foregroundColor(.blue)
+//                    .frame(width: 100, height: 50)
+//                    .cornerRadius(10)
+//                    .overlay(Text("save event").foregroundColor(.white))
+//
+//            }).buttonStyle(BorderedButtonStyle())
+//                .padding(.vertical, 8)
+//                .padding(.horizontal, 20)
+//
+//        }.padding(.bottom)
+//    }
+//}
+
+//struct removeFav: View{
+//    var name: String
+//    @State public var isFav = true
+//    var body: some View{
+//        Section{
+//            Button(action: {
+//                remove_fav(name: name)
+//                isFav = false
+//            }, label: {
+//                Rectangle()
+//                    .foregroundColor(.red)
+//                    .frame(width: 100, height: 50)
+//                    .cornerRadius(10)
+//                    .overlay(Text("Remove Favourite").foregroundColor(.white))
+//                
+//            }).buttonStyle(BorderedButtonStyle())
+//                .padding(.vertical, 8)
+//                .padding(.horizontal, 20)
+//            
+//        }.padding(.bottom)
+//    }
+//}
 
 
 

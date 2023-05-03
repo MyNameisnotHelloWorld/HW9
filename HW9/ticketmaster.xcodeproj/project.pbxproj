@@ -232,7 +232,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6DDBCA7829DBB5C900E03A27 /* Build configuration list for PBXProject "HW9" */;
+			buildConfigurationList = 6DDBCA7829DBB5C900E03A27 /* Build configuration list for PBXProject "ticketmaster" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -611,7 +611,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6DDBCA7829DBB5C900E03A27 /* Build configuration list for PBXProject "HW9" */ = {
+		6DDBCA7829DBB5C900E03A27 /* Build configuration list for PBXProject "ticketmaster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DDBCAA029DBB5CA00E03A27 /* Debug */,

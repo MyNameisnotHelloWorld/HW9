@@ -25,7 +25,7 @@ struct ContentView: View {
 //    @State var autoValue = false
 //    @State var distance: Int = 10
 //    @State var option_lst = ["Default","Music","Sports","Arts & Theatre","Film","Miscellaneous"]
-    @State var getteam = "Big Bang"
+//    @State var getteam = "Big Bang"
     
     var body: some View {
         NavigationView {
@@ -34,6 +34,8 @@ struct ContentView: View {
                     HStack{
                         Spacer()
                         gotoFav()
+                        
+                        
                     }
                     formView()
                     
@@ -48,7 +50,7 @@ struct ContentView: View {
             }
             
             
-        }
+        }.background(.white)
     }
     
     
